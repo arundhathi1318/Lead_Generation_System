@@ -1,0 +1,74 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "myleadform",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "78c5b15e-1474-434a-869b-6d294317e0c4",
+      "name": "Webhook",
+      "webhookId": "41af2f2c-9303-4ad3-94e1-445f1d3e5093"
+    },
+    {
+      "parameters": {
+        "fromEmail": "arundhathijampala@gmail.com",
+        "toEmail": "={{ $json.body.email }}",
+        "subject": "=SMTP Test from n8n: {{ $json.body.name }}",
+        "html": "=<h3>Gmail SMTP Test Successful!</h3>\n<p>This email was sent from <strong>n8n</strong> using <strong>Gmail SMTP</strong> with an App Password.</p>\n\n<h4>New Lead Information:</h4>\n<ul>\n  <li><strong>Name:</strong> {{ $json.body.name }}</li>\n  <li><strong>Email:</strong> {{ $json.body.email }}</li>\n  <li><strong>Company:</strong> {{ $json.body.company }}</li>\n  <li><strong>Message:</strong> {{ $json.body.message }}</li>\n</ul>\n\n<hr>\n<p style=\"font-size: 0.9em; color: #555;\">\n  This message was automatically generated and sent via n8n workflow.\n</p>\n",
+        "options": {
+          "appendAttribution": true,
+          "allowUnauthorizedCerts": true,
+          "replyTo": "erpoaf@gmail.com"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "f51d80e3-6c18-4dea-91c9-1346228195f7",
+      "name": "Send Email",
+      "webhookId": "d08b37d5-b835-4e9b-9e29-ec04cd5053ab",
+      "credentials": {
+        "smtp": {
+          "id": "zxYo8G7MJ5o9uWqb",
+          "name": "n8n Docs Gmail SMTP"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4ef297ba-6cb8-49ec-b714-a2a134ecd14a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c178a92809bc93fdb63319370dcd1f7833a0f980858d246f195eff712aee2588"
+  },
+  "id": "zJ7Uuhiirm1XZLMJ",
+  "tags": []
+}
