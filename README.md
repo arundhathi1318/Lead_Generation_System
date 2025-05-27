@@ -1,5 +1,4 @@
-** The Lead Generator 3000 **
-
+LEAD GENERATION SYSTEM
 Hi there, I have developed a Simple Lead Generation System. Please check out the setup below
 
 **Live Demo:**
