@@ -26,131 +26,138 @@ Hi there, I have developed a Simple Lead Generation System. Please check out the
 3.  Docker (for local n8n) or an n8n Cloud account
 4.  Git
 
----
-## ⚙️ Local Setup & Installation Steps
+# 🚀 Lead Generation System Setup & Installation Guide
+
 ---
 
-### 1. Clone the Repository
+## ⚙️ Local Setup & Installation Steps
+
+### 1. Clone the Repository  
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
-
 ```
-Run the backend server:
-```bash
+2. Run the Backend Server
+```
 cd backend
-source venv/bin/activate
+source venv/bin/activate   # Activate virtual environment (Linux/macOS)
+# OR
+.\venv\Scripts\activate    # For Windows PowerShell
 python app.py
 ```
-Run the Frontend server:
-```bash
+3. Run the Frontend Server
+```
 cd frontend
+npm install               # Install dependencies if needed
 npm run dev
-
 ```
-n8n Setup (Local Docker) & Workflow Configuration
-
-@Run n8n Locally using Docker
+4. n8n Setup (Local Docker) & Workflow Configuration
+4.1 Run n8n Locally using Docker
 ```
-# Run n8n container, mapping port 5678 and persisting data in 'n8n_data' volume
+# Run n8n container, mapping port 5678 and persisting data
 docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n
 ```
-** Configure n8n Workflow**
-Import Workflow: In your local n8n (http://localhost:5678), import the workflow.json file (usually located in the repository's n8n/ folder or root).
+**4.2 Import Workflow**
+Open http://localhost:5678 in your browser
 <br>
 
-Get Webhook URL:
-<br>
-
-Open the imported workflow in n8n.
-<br>
-
-Select the "Webhook" node.
-<br>
-
-Under "Webhook URLs", copy the TEST URL (e.g., http://localhost:5678/webhook-test/YOUR_WORKFLOW_ID).
+Import the workflow JSON file (usually in your repo’s n8n/ folder or project root)
 <br>
 
 
-
-Go back to your backend terminal.
-Open the backend/.env file.
-Replace YOUR_N8N_WEBHOOK_URL_GOES_HERE with the TEST Webhook URL you just copied from n8n. Save the file.
-
-
-**n8n CONFIGURATION**
-
-
-
-Configure Email Node:
+**4.3 Get Webhook URL**
+Open the imported workflow in n8n
 <br>
 
-In n8n, open the "Send Email" node (or SendGrid, Mailgun, etc.).
+
+Select the Webhook node
 <br>
 
-Add/select your email service credentials.
+
+Copy the TEST URL (e.g., http://localhost:5678/webhook-test/YOUR_WORKFLOW_ID)
 <br>
 
-Set the "To Address" for notifications.
+
+**4.4 Update Backend Webhook URL**
+Open your backend .env file or update directly in app.py
 <br>
 
-Ensure the subject and body use expressions (e.g., {{ $json.body.name }}) to include lead data.
-<br>
-
-Activate Workflow: In n8n, toggle the workflow to Active.
-<br>
-
- 
- **Run Backend & Test System**
- 
-Run Backend Server:
-<br>
+Replace YOUR_N8N_WEBHOOK_URL_GOES_HERE with the TEST Webhook URL you just copied
 
 <br>
 
-Go to your backend terminal (where the virtual environment is active and you updated the .env file).
-Execute:
+Save the file
+<br>
+
+
+**5. Configure Email Node in n8n**
+Open the Send Email node (or SendGrid, Mailgun, etc.)
+<br>
+
+
+Add/select your email service credentials
+<br>
+
+Set the To Address to receive lead notifications
+<br>
+
+
+Use expressions like {{ $json.body.name }} and others in the email subject and body to include lead data dynamically
+<br>
+
+
+6. Activate Workflow
+Toggle your workflow in n8n to Active
+<br>
+
+
+8. Run Backend & Test System
+7.1 Run Backend Server
 ```
 python app.py
 ```
-Use code with caution.
+
+
+
+
+8. Test Full System Flow
+Make sure frontend is running (e.g., http://localhost:5173)
 <br>
 
-Bash
-(Or flask run if your project is configured for it. Assumes app.py contains if __name__ == '__main__': app.run(...))
-
-
-**TEST**
-
-
- 
-Ensure your Frontend (from Step 3, e.g., http://localhost:5173) is running.
-<br>
-
-Ensure your n8n Docker container (from Step 4A) is running.
-<br>
-
-Ensure your Backend server  is running.
-<br>
-
-Open the frontend URL in your browser, fill out, and submit the lead form.
-<br>
-
-Check your backend terminal for logs.
-<br>
-
-Check n8n (http://localhost:5678) under "Executions" to see if the workflow triggered.
-<br>
-
-Check your email for the lead notification.
+Ensure n8n Docker container is running (http://localhost:5678)
 <br>
 
 
-
-Activate the workflow.
+Ensure backend server is running
 <br>
 
-Crucially: Use the PRODUCTION Webhook URL from n8n Cloud in your backend's N8N_WEBHOOK_URL environment variable (both for local testing against n8n Cloud and when deploying your backend).
+Open frontend in your browser, fill and submit the lead form
+<br>
+
+
+Watch backend terminal logs for submission
+<br>
+
+
+Check n8n Executions panel to confirm workflow triggered
+<br>
+
+
+Check your email for the lead notification message
+<br>
+
+
+**9. Production Deployment Notes**
+When deploying, use the PRODUCTION Webhook URL from n8n Cloud or your hosted n8n instance in your backend’s N8N_WEBHOOK_URL environment variable
+<br>
+
+
+This ensures your system works seamlessly in production and during local testing
+
+***🎉 Congratulations! Your Lead Generation System with automated n8n workflows is ready to use! 🎉****
+
+
+
 
 
 
