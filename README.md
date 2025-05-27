@@ -1,6 +1,8 @@
 # ✨ The "Leads-Go-Brrr" Generator 3000 ✨
 
-Tired of leads slipping through your fingers like buttered eels? Fear not! This project whips up a simple, yet surprisingly effective, lead generation system. It features a snazzy frontend form, a robust backend API, and some n8n magic to make sure your sales team gets notified faster than they can say "cha-ching!"
+
+Hi there , I have developed a Simple Lead generation System Please check Out the details below!!
+
 
 **Live Demo (if you dare!):**
 *   **Frontend:** https://lead-generation-system-seven.vercel.app
