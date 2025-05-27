@@ -1,6 +1,6 @@
-# ✨ The "Leads-Go-Brrr" Generator 3000 ✨
+  The Lead Generator 3000 
 
-Hi there, I have developed a Simple Lead Generation System. Please check out the details below!
+Hi there, I have developed a Simple Lead Generation System. Please check out the setup below
 
 **Live Demo:**
 *   **Frontend:** https://lead-generation-system-seven.vercel.app
